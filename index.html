@@ -1,0 +1,69 @@
+<html>
+    <head>
+        <title>HTML Dino Game</title>
+        <h2>HTML Dino Game</h2>
+    </head>
+    <body>
+        <canvas id="myCanvas" style="border:3px solid #000000; width: 60%; height: 20%;"></canvas>
+        <p id="highscore">High Scores:</p>
+        <p id="keyinputtest">Press a key and the value will display here.</p>
+        <table id="scores">
+            <tr>
+                <th>Name</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+                <td>Bob Winder</td>
+                <td>102034020</td>
+            </tr>
+            <tr>
+                <td>Peter</td>
+                <td>90010</td>
+            </tr>
+            <tr>
+                <td>Joe</td>
+                <td>86503</td>
+            </tr>
+            <tr>
+                <td>Dylan</td>
+                <td>56000</td>
+            </tr>
+            <tr>
+                <td>Ray</td>
+                <td>56000</td>
+            </tr>
+            <tr>
+                <td>Alex</td>
+                <td>1</td>
+            </tr>
+        </table>
+        <style>
+            body {
+                background-color: whitesmoke;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+            #scores {
+                position: absolute;
+                top: 40%;
+                left: 40%;
+                width: 20%;
+                text-align: center;
+            }
+            #keyinputtest {
+                position: absolute;
+                top: 50%;
+                right: 10%;
+            }
+        </style>
+        <script>
+            document.onkeydown = printKey;
+
+            function printKey(e) {
+                let event = window.event ? window.event : e;
+                let keyText = document.getElementById("keyinputtest");
+                keyText.innerHTML = event.code;
+            }
+        </script>
+    </body>
+</html>
