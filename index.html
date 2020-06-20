@@ -5,6 +5,15 @@
     </head>
     <body>
         <canvas id="myCanvas" style="border:3px solid #000000; width: 60%; height: 20%;"></canvas>
+        <script>
+        window.onload = function() {
+            var x = document.getElementById("myCanvas");
+            var ctx = x.getContext("2d");
+            var dino = document.getElementById("dino");
+            ctx.drawImage(dino, 10, 10);
+        };
+        </script>
+
         <p id="highscore">High Scores:</p>
         <p id="keyinputtest">Press a key and the value will display here.</p>
         <table id="scores">
@@ -65,5 +74,6 @@
                 keyText.innerHTML = event.code;
             }
         </script>
+
     </body>
 </html>
