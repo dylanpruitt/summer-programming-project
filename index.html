@@ -6,22 +6,27 @@
     <body>
         <canvas id="myCanvas" style="border:3px solid #000000; width: 60%; height: 20%;"></canvas>
         <script>
-            var dino;
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var dino;
+        startGame();
 
-            function startGame() { 
-                myCanvas.start();
-                dino = new component(30, 30, "green", 120, 120)
-            }
+        function startGame() { 
+            myCanvas.start();
+            dino = new component(30, 30, "green", 120, 120);
+        }
         
         function component(width, height, color, x, y) {
             this.width = width;
             this.height = height;
-            this.x = x
-            this.y = y
-            xtx = myCanvas.context;
+            this.x = x;
+            this.y = y;
+            ctx = canvas.context;
             ctx.fillStyle = color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
+
+
         </script>
 
         <p id="highscore">High Scores:</p>
