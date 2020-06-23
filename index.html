@@ -6,25 +6,57 @@
     <body>
         <canvas id="myCanvas" style="border:3px solid #000000; width: 60%; height: 20%;"></canvas>
         <script>
-        var canvas = document.getElementById("myCanvas");
-        var ctx = canvas.getContext("2d");
-        var dino;
-        startGame();
+        const canvas = document.getElementbyId('canvas');
+        const ctx = canvas.getContext('2d');
 
-        function startGame() { 
-            myCanvas.start();
-            dino = new component(30, 30, "green", 120, 120);
+        let score;
+        let highscore;
+        let dino;
+        let gravity;
+        let obstacles;
+        let gameSpeed;
+        let keys = [];
+
+        class Dino {
+            constructor(x, y, w, h, c){
+                this.x = x;
+                this.y = y;
+                this.w = w;
+                this.h = h;
+                this.c = c;
+
+                this.dy = 0;
+                this.jumpForce = 15;
+                this.originalHeight = h;
+
+            }
+
+            Draw () {
+                ctx.beginPath();
+                ctx.fillStyle = this.c;
+                ctx.fillRect(this.x, this.y, this.w, this.h);
+                ctx.closePath();
+            }
+
         }
-        
-        function component(width, height, color, x, y) {
-            this.width = width;
-            this.height = height;
-            this.x = x;
-            this.y = y;
-            ctx = canvas.context;
-            ctx.fillStyle = color;
-            ctx.fillRect(this.x, this.y, this.width, this.height);
+
+        function Start () {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            ctx.font = "30px arial";
+
+            gameSpeed = 3;
+            gravity = 1;
+
+            score = 0;
+            highscore = 0;
+
+            dino = new Dino(25, canvas.height - 150, 50, 50, '19B600');
+
         }
+
+        dino.Draw();
 
 
         </script>
