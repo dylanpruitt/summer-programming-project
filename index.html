@@ -6,7 +6,7 @@
     <body>
         <canvas id="myCanvas" style="border:3px solid #000000; width: 60%; height: 20%;"></canvas>
         <script>
-        const canvas = document.getElementbyId('canvas');
+        const canvas = document.getElementById('myCanvas');
         const ctx = canvas.getContext('2d');
 
         let score;
@@ -31,7 +31,7 @@
 
             }
 
-            Draw () {
+            draw () {
                 ctx.beginPath();
                 ctx.fillStyle = this.c;
                 ctx.fillRect(this.x, this.y, this.w, this.h);
@@ -40,7 +40,7 @@
 
         }
 
-        function Start () {
+        function start () {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
@@ -56,7 +56,9 @@
 
         }
 
-        dino.Draw();
+        start();
+
+        dino.draw();
 
 
         </script>
