@@ -26,7 +26,7 @@
                 this.c = c;
 
                 this.dy = 0;
-                this.jumpForce = 15;
+                this.jumpForce = 20;
                 this.originalHeight = h;
 
             }
@@ -44,7 +44,7 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            ctx.font = "30px arial";
+            ctx.font = "64px arial";
 
             gameSpeed = 3;
             gravity = 1;
@@ -54,11 +54,30 @@
 
             dino = new Dino(25, canvas.height - 150, 50, 50, '19B600');
 
+            setInterval(loop, 33);
         }
 
         start();
 
-        dino.draw();
+        function loop () {
+            score++;
+            dino.y += dino.dy;
+            dino.dy += gravity;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            if (dinoIsCollidingWithGround()) {
+                dino.y = canvas.height - 150;
+                dino.dy = 0;
+            }
+
+            ctx.fillText(score, canvas.width - 150, 75);
+
+            dino.draw();
+
+        }
+
+        function dinoIsCollidingWithGround () { if (dino.y > canvas.height - 150) { return true; } else { return false; } }
 
 
         </script>
@@ -115,12 +134,17 @@
             }
         </style>
         <script>
-            document.onkeydown = printKey;
+            document.onkeydown = onkeydown;
 
-            function printKey(e) {
+            function onkeydown(e) {
                 let event = window.event ? window.event : e;
                 let keyText = document.getElementById("keyinputtest");
                 keyText.innerHTML = event.code;
+
+                if (event.code === "ArrowUp" && dino.y === canvas.height - 150) {
+                    dino.dy = -1 * dino.jumpForce;
+                    console.log("pressed up");
+                }
             }
         </script>
 
